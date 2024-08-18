@@ -63,19 +63,25 @@ export default function Sample({viewFileBlob}: {viewFileBlob: string}) {
             </header>
             <div className="Example__container">
                 <div className="Example__container__document flex justify-center" ref={setContainerRef}>
-                    <div className={'fixed left-[20px]  top-0 z-10 bottom-0 h-[100%] overflow-scroll'}>
+                    <div className={'fixed left-[20px] hidden md:block  top-0 z-10 bottom-0 h-[100%] overflow-scroll'}>
                         {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
                         {/*// @ts-expect-error*/}
                         <Document file={file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
                             {/*<Thumbnail pageIndex={0} ></Thumbnail>*/}
-                            {Array.from(new Array(numPages), (_el, index) => (
-                                <Page
-                                    key={`page_${index + 1}`}
-                                    pageNumber={index + 1}
-                                    scale={0.2}
-                                    onClick={() => thumbnailClick(index)}
-                                >{index}</Page>
-                            ))}
+                            <div>
+                                {Array.from(new Array(numPages), (_el, index) => (
+                                    <Page
+                                        key={`page_${index + 1}`}
+                                        pageNumber={index + 1}
+                                        scale={0.2}
+                                        onClick={() => thumbnailClick(index)}
+                                    >
+                                        <div className={'font-bold text-[18px] text-gray-600 w-full text-right px-[10px]'}>
+                                            {index + 1}
+                                        </div>
+                                    </Page>
+                                ))}
+                            </div>
                         </Document>
                     </div>
                     {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}

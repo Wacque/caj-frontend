@@ -21,7 +21,7 @@ function PDFWidget({cajFile}: { cajFile: CajFile }) {
         const formData = new FormData();
         formData.append("file", cajFile.file, cajFile.file.name);
 
-        fetch("/upload", {
+        fetch("https://www.viewcaj.online/upload", {
             method: "POST",
             body: formData,
             redirect: "follow"
@@ -94,7 +94,7 @@ export default function Home() {
         }
     }, [fileRef, fileRef.current]);
 
-    return <div className={'bg-white min-h-[100vh] box-border'}>
+    return <div className={'bg-white min-h-[100vh] box-border pb-[50px]'}>
         <input ref={fileRef} hidden={true} accept={'.caj'} type="file"/>
         <div className={'h-[56px] border-b-[1px] flex items-center'}>
             <div className={'px-[16px] flex items-center sm:px-[32px] text-[22px] font-[700]'}>
