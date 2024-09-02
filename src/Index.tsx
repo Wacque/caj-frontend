@@ -42,6 +42,8 @@ function PDFWidget({cajFile}: { cajFile: CajFile }) {
     }
 
     const goPreview = function () {
+        if(cajFile.uploadStatus !== "uploaded") return
+
         setViewCajFile(cajFile)
         navigator("/view")
     }
@@ -96,9 +98,12 @@ export default function Home() {
 
     return <div className={'bg-white min-h-[100vh] box-border pb-[50px]'}>
         <input ref={fileRef} hidden={true} accept={'.caj'} type="file"/>
-        <div className={'h-[56px] border-b-[1px] flex items-center'}>
+        <div className={'h-[56px] border-b-[1px] justify-between flex items-center'}>
             <div className={'px-[16px] flex items-center sm:px-[32px] text-[22px] font-[700]'}>
                 <img src={Logo} className={'mr-[10px]'} alt=""/> View CAJ Online
+            </div>
+            <div className={'pr-[16px] sm:pr-[32px] select-none'}>
+                <a href="mailto:alew88102@gmail.com">Contact us</a>
             </div>
         </div>
         <div className="px-[16px] sm:px-[32px]  m-auto max-w-[1136px]  w-full mt-[30px] sm:mt-[60px]">
@@ -116,7 +121,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className={'mt-[10px] flex'}>
+            <div className={'mt-[10px] flex flex-wrap'}>
                 {uploadCAJFiles.map((caiFile, index) =>
                     <div key={index} className={'m-[4px]'}><PDFWidget cajFile={caiFile}/></div>)
                 }

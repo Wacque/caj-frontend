@@ -5,7 +5,7 @@ function Viewer() {
     const {viewCajFile} = useContext(TopContext)
     return (
         <div>
-            <Sample viewFileBlob={viewCajFile!.blobUrl!}/>
+            <Sample viewFile={viewCajFile!}/>
         </div>
     );
 }

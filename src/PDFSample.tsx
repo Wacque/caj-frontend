@@ -7,6 +7,7 @@ import 'react-pdf/dist/esm/Page/TextLayer.css';
 import './pdf-sample.css';
 
 import type {PDFDocumentProxy} from 'pdfjs-dist';
+import {CajFile} from "./Provider.tsx";
 
 pdfjs.GlobalWorkerOptions.workerSrc = '//unpkg.com/pdfjs-dist@4.4.168/build/pdf.worker.min.mjs';
 
@@ -22,8 +23,8 @@ const maxWidth = 800;
 
 type PDFFile = string | File | null;
 
-export default function Sample({viewFileBlob}: {viewFileBlob: string}) {
-    const [file] = useState<PDFFile>(viewFileBlob);
+export default function Sample({viewFile}: {viewFile: CajFile}) {
+    const [file] = useState<PDFFile>(viewFile.blobUrl);
     const [numPages, setNumPages] = useState<number>();
     const [containerRef, setContainerRef] = useState<HTMLElement | null>(null);
     const [containerWidth, setContainerWidth] = useState<number>();
@@ -57,9 +58,18 @@ export default function Sample({viewFileBlob}: {viewFileBlob: string}) {
         }
     }
 
+    const downloadPdf = function () {
+        // download blob url
+        const a = document.createElement('a');
+        a.href = viewFile.blobUrl;
+        a.download = viewFile.file.name.replace('.caj', '.pdf');
+        a.click();
+    }
+
     return (
         <div className="Example">
-            <header>
+            <header className={'flex justify-end items-center pr-[30px]'}>
+                <div onClick={downloadPdf} className={'underline cursor-pointer white font-bold'}>Download</div>
             </header>
             <div className="Example__container">
                 <div className="Example__container__document flex justify-center" ref={setContainerRef}>
