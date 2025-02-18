@@ -4,6 +4,13 @@
 
 CAJ Viewer is a web application that allows users to convert CAJ files to PDF format online. Built with React, TypeScript, and Vite, it provides a fast and efficient way to view and convert academic documents from the CNKI (China National Knowledge Infrastructure) platform.
 
+## Online Preview
+
+The online version of the application is available at:  
+[https://www.viewcaj.online/](https://www.viewcaj.online/)
+
+[查看中文版 README](./README.zh-CN.md)
+
 ## Features
 
 - **Online Conversion**: Convert CAJ files to PDF directly in your browser
@@ -25,7 +32,7 @@ CAJ Viewer is a web application that allows users to convert CAJ files to PDF fo
 ### Prerequisites
 
 - Node.js (v16 or higher)
-- npm or yarn
+- pnpm or yarn
 
 ### Installation
 
@@ -35,11 +42,11 @@ CAJ Viewer is a web application that allows users to convert CAJ files to PDF fo
    ```
 2. Install dependencies:
    ```bash
-   npm install
+   pnpm install
    ```
 3. Start the development server:
    ```bash
-   npm run dev
+   pnpm run dev
    ```
 
 ### Building for Production
@@ -47,7 +54,7 @@ CAJ Viewer is a web application that allows users to convert CAJ files to PDF fo
 To create a production build:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ### Linting
@@ -55,7 +62,7 @@ npm run build
 The project uses ESLint for code quality checks:
 
 ```bash
-npm run lint
+pnpm run lint
 ```
 
 ## Configuration
@@ -92,9 +99,9 @@ This project is licensed under the MIT License.
 
 The project uses the following environment variables:
 
-| Variable Name       | Description                  | Default Value |
-| ------------------- | ---------------------------- | ------------- |
-| `VITE_API_BASE_URL` | Base URL for the backend API | `http://      |
+| Variable Name       | Description                  | Default Value           |
+| ------------------- | ---------------------------- | ----------------------- |
+| `VITE_API_BASE_URL` | Base URL for the backend API | `http://localhost:3000` |
 
 To configure these variables:
 
